@@ -3,12 +3,16 @@ services:
     name: smart-soft-copy
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python app.py
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
     envVars:
       - key: FLASK_ENV
         value: production
       - key: SECRET_KEY
         generateValue: true
+      - key: DATABASE_URL
+        fromService:
+          name: smart-soft-copy-db
+          property: connectionString
 
 databases:
   - name: smart-soft-copy-db
