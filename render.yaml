@@ -9,8 +9,9 @@ services:
         value: production
       - key: SECRET_KEY
         generateValue: true
-    databases:
-      - name: smart-soft-copy-db
-        databaseName: smart_soft_copy
-        user: smart_soft_copy_user
-        plan: starter
+
+databases:
+  - name: smart-soft-copy-db
+    databaseName: smart_soft_copy
+    user: smart_soft_copy_user
+    plan: starter
