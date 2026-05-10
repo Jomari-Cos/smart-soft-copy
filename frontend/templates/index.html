@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMART SOFT COPY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SMART SOFT COPY</h1>
+            <p>Intelligent grade mapping system</p>
+        </header>
+
+        <div class="two-panel">
+            <div class="panel">
+                <h2>Teacher's List</h2>
+                <div class="drop-zone" id="teacherDrop">
+                    <p>Drag & drop Excel file here</p>
+                    <p class="or">or</p>
+                    <button class="file-btn" data-target="teacher">
+                        <img src="{{ url_for('static', filename='icons/upload.svg') }}" alt="" class="btn-icon">
+                        <span class="btn-text">Browse File</span>
+                        <span class="btn-spinner"></span>
+                    </button>
+                </div>
+                <input type="file" id="teacherFile" class="file-input" accept=".xlsx,.xls,.csv">
+                <div class="table-container">
+                    <table id="teacherTable">
+                        <thead><tr><th>Name</th><th>Grade</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>Registrar's List</h2>
+                <div class="drop-zone" id="registrarDrop">
+                    <p>Drag & drop Excel file here</p>
+                    <p class="or">or</p>
+                    <button class="file-btn" data-target="registrar">
+                        <img src="{{ url_for('static', filename='icons/upload.svg') }}" alt="" class="btn-icon">
+                        <span class="btn-text">Browse File</span>
+                        <span class="btn-spinner"></span>
+                    </button>
+                </div>
+                <input type="file" id="registrarFile" class="file-input" accept=".xlsx,.xls,.csv">
+                <div class="table-container">
+                    <table id="registrarTable">
+                        <thead><tr><th>#</th><th>Name</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn-secondary" id="vlookupBtn">
+                <img src="{{ url_for('static', filename='icons/refresh.svg') }}" alt="" class="btn-icon">
+                <span class="btn-text">Run VLOOKUP</span>
+                <span class="btn-spinner"></span>
+            </button>
+        </div>
+
+        <div class="result-section">
+            <h2>Results</h2>
+            <div class="result-actions">
+                <button class="btn-export" id="exportXlsxBtn">
+                    <img src="{{ url_for('static', filename='icons/excel.svg') }}" alt="" class="btn-icon">
+                    <span class="btn-text">Export Excel</span>
+                </button>
+                <button class="btn-export" id="exportCsvBtn">
+                    <img src="{{ url_for('static', filename='icons/csv.svg') }}" alt="" class="btn-icon">
+                    <span class="btn-text">Export CSV</span>
+                </button>
+            </div>
+            <div class="table-container">
+                <table id="resultTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Student Names</th>
+                            <th>Grade</th>
+                            <th>Registrar Match</th>
+                            <th>Confidence</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
