@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMART SOFT COPY</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script src="https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
@@ -13,6 +14,7 @@
         <header>
             <h1>SMART SOFT COPY</h1>
             <p>Intelligent grade mapping system</p>
+            <button id="guidelinesBtn" class="guidelines-btn">Guidelines</button>
         </header>
 
         <div class="two-panel">
@@ -91,6 +93,19 @@
                     </thead>
                     <tbody></tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF Modal -->
+    <div id="pdfModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Excel Format Guidelines</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <embed src="{{ url_for('static', filename='images/Excel Format.pdf') }}" type="application/pdf" class="pdf-embed">
             </div>
         </div>
     </div>

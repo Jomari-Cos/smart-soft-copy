@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from flask_migrate import Migrate
 
 from backend.config import config
@@ -28,6 +28,11 @@ def create_app(config_name=None):
     @app.route('/')
     def index():
         return render_template('index.html')
+
+    # Favicon route
+    @app.route('/favicon.ico')
+    def favicon():
+        return send_from_directory(os.path.join(app.root_path, '../frontend/static'), 'favicon.ico', mimetype='image/x-icon')
     
     # Create database tables
     with app.app_context():

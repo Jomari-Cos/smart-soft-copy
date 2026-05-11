@@ -8,6 +8,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const registrarTable = document.querySelector('#registrarTable tbody');
     const resultTable = document.querySelector('#resultTable tbody');
     
+    // Modal elements
+    const guidelinesBtn = document.getElementById('guidelinesBtn');
+    const pdfModal = document.getElementById('pdfModal');
+    const closeModal = document.getElementById('closeModal');
+
+    // Modal functionality - show modal on button click
+    if (guidelinesBtn && pdfModal && closeModal) {
+        guidelinesBtn.addEventListener('click', () => {
+            pdfModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeModal.addEventListener('click', () => {
+            pdfModal.classList.remove('show');
+            document.body.style.overflow = '';
+        });
+
+        pdfModal.addEventListener('click', (e) => {
+            if (e.target === pdfModal) {
+                pdfModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && pdfModal.classList.contains('show')) {
+                pdfModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
     let teacherGrades = []; // {id, name, grade}
     let officialStudents = []; // {id, full_name}
     let submissionData = []; // {id, matched_student_id, confidence}
